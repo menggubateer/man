@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>广告滚动</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=gbk">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+		ul{
+			border: 1px dashed red;
+			width: 300px;
+			height: auto;
+			text-align: center;
+			overflow: hidden;
+		}
+		ul li{
+			list-style: none;
+			color: #333;
+			font-size: 16px;
+		}
+	</style>
+  </head>
+  
+  <body>
+  	<div id="news"> 
+     	<ul>
+  		<li>美国航母停靠台湾海峡。。</li>
+  		<li>中国航母如何对应。。</li>
+  		<li>中方对印度的侵犯如何回应?</li>
+  		<li>如何解决国土完整问题？</li>
+  	</ul>
+  	</div>
+  	<script type="text/javascript" src="js/jQuery1.11.1.js"></script>
+  	<script type="text/javascript" src="js/jquery-migrate-1.2.0.js"></script>
+    <script type="text/javascript">
+    $(function(){ 
+    	var $this = $("#news"); 
+    	var scrollTimer; 
+    	$this.hover(function() { 
+    		clearInterval(scrollTimer); 
+    	}, function() { 
+    	scrollTimer = setInterval(function() { 
+    		scrollNews($this); 
+    	},0); 
+    	}).trigger("mouseleave"); 
+
+    	function scrollNews(obj) { 
+    		var $self = obj.find("ul"); 
+    		var lineHeight = $self.find("li:first").height(); 
+    	$self.animate({ 
+    		"marginTop": -lineHeight + "px" 
+    	}, 600, function() { 
+    	$self.css({ 
+    		marginTop: 0 
+    	}).find("li:first").appendTo($self); 
+    	}); 
+    	} 
+    	}); 
+    </script>
+  </body>
+</html>

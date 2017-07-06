@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>图片轮换</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=gbk">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	 <style type="text/css">
+		ul,li{padding: 0;margin: 0; list-style: none;}
+		.adver{margin: 0 auto; width: 700px; overflow: hidden; height: 454px; position: relative; background: url("images/adver01.jpg");}
+		ul{position: absolute; bottom:10px; z-index: 100; width: 100%; text-align: center;}
+		ul li{display: inline-block; font-size: 10px; line-height: 20px; font-family: "微软雅黑"; margin: 0 1px; width: 20px; height: 20px; border-radius: 50%; background: #333333; text-align: center; color: #ffffff;}
+		.arrowLeft,.arrowRight{
+   			position: absolute;
+    		width: 30px;
+    		background:rgba(0,0,0,0.2);
+    		height: 50px;
+    		line-height: 50px;
+    		text-align: center;
+    		top:200px;
+    		z-index: 150;
+    		font-family: "微软雅黑";
+    		font-size: 28px;
+    		font-weight: bold;
+    		cursor: pointer;
+    		display: none;
+	}		
+	.arrowLeft{left: 10px;}
+	.arrowRight{right: 10px;}
+	li:nth-of-type(1){
+    		background: orange;
+}
+		
+	</style>
+  </head>
+  
+  <body>
+    <div class="adver">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <div class="arrowLeft"></div><div class="arrowRight"></div>
+</div>
+<script src="js/jQuery1.11.1.js"></script>
+<script type="text/javascript">
+$(function(){
+	var image=Array("adver01.jpg","adver02.jpg","adver03.jpg"
+		,"adver04.jpg","adver05.jpg","adver06.jpg");
+	var index=0;//数组下表
+	$(".adver").mouseover(function(){
+		$(".arrowLeft").show();
+		$(".arrowRight").show();
+	}).mouseout(function(){
+		$(".arrowLeft").hide();
+		$(".arrowRight").hide();
+	});	
+	$(".arrowRight").click(function(){
+		
+		if(index==image.length-1){
+			$(".adver").css("background","url(images/"+image[5]+")");
+		}else{
+			index++;
+			$(".adver").css("background","url(images/"+image[index]+")");
+			$("li:eq("+index+")").css("background","orange");
+			$("li:eq("+index+")").siblings().css("background","#333333");
+		}
+		
+	});
+$(".arrowLeft").click(function(){
+		
+		if(index==0){
+			$(".adver").css("background","url(images/"+image[0]+")");
+		}else{
+			index--;
+			$(".adver").css("background","url(images/"+image[index]+")");
+			$("li:eq("+index+")").css("background","orange");
+			$("li:eq("+index+")").siblings().css("background","#333333");
+		}
+		
+	});	
+$("div ul li").click(function(){
+	
+		index++;
+		$(this).css("background","orange");
+		$(".adver").css("background","url(images/"+image[index]+")");
+		$(this).siblings().css("background","#333333");
+	
+});
+
+	
+});
+</script>
+  </body>
+</html>

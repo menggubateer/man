@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>广告内容无缝滚动</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=gbk">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+		ul{
+			border: 1px dashed red;
+			width: 300px;
+			height: auto;
+			text-align: center;
+		}
+		ul li{
+			list-style: none;
+			color: #333;
+			font-size: 16px;
+		}
+	</style>
+  </head>
+  
+  <body>
+  	<ul>
+  		<li>美国航母停靠台湾海峡。。</li>
+  		<li>中国航母如何对应。。</li>
+  		<li>中方对印度的侵犯如何回应?</li>
+  		<li>如何解决国土完整问题？</li>
+  	</ul>
+  	<script type="text/javascript" src="js/jQuery1.11.1.js"></script>
+  	<script type="text/javascript" src="js/jquery-migrate-1.2.0.js"></script>
+    <script type="text/javascript">
+    //1.获取到li元素列表中的第一个元素中的内容,使用的是clone()方法来获取
+	//2.显示所有的li元素的列表内容，利用parent()方法来获取所有li元素的列表内容：
+	//3.将获取到的第一条li元素中的内容追加到所有li元素列表内容的后面：
+	//4.接到上面，继续要做的就是让第一个li元素给隐藏掉，做法如下：
+	//5.最后利用setInterval('scroll_news()',1000);反复调用
+		function scrollNews(){
+		$(function(){
+  			$("ul li").eq(0).fadeOut("slow",function(){
+  			//页面中第一个li元素被自动添加到了第四个li元素的末尾
+   			$(this).clone().appendTo($(this).parent()).fadeIn("slow");
+   			$(this).remove();
+  			});
+		});
+		}
+		//以上方法连续执行
+		setInterval('scrollNews()',1000);
+</script>
+  </body>
+</html>
