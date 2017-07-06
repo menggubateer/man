@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>json解析方法</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=gbk">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script src="js/jQuery1.11.1.js"></script>
+	<script type="text/javascript" src="js/jquery-migrate-1.2.0.js"></script>
+ 	<script type="text/javascript">
+ 		$(function(){
+ 			//第一种简单json  的解析
+ 			/* var date={"firstName":"小兰","lastName":"胡其二"};
+ 			//解析上面的json格式中的内容
+ 			//i表示      有几个对象
+ 			//dom表示  对象值
+ 			$.each(date,function(i,dom){
+ 				alert(dom);
+ 			}); */
+ 			
+ 			//第二种json 的解析
+ 			/* var date={
+ 					"people":[
+ 					     {     
+ 					     "firstName":"小黄",
+ 					     "lastName":"其其格"
+ 					     },
+ 					    {     
+ 	 					  "firstName":"小明",
+ 	 					  "lastName":"木其尔"
+ 	 					 }
+ 					]
+ 			};
+ 			//解析：
+ 			$.each(date.people,function(i,dom){
+ 				alert(dom.firstName+"\t"+dom.lastName);
+ 			}); */
+ 			
+ 			//第三种复杂的JSON 解析
+ 			var date={
+ 					"name":"中国",
+ 					"province":[{
+ 					"name":"黑龙江",
+ 					"cities":{
+ 						"city":["哈尔滨","大庆"]
+ 					}
+ 					},{
+ 						"name":"广东",
+ 	 					"cities":{
+ 	 						"city":["广州","深圳","珠海"]
+ 	 					}
+ 					},{
+ 						"name":"内蒙古",
+ 	 					"cities":{
+ 	 						"city":["呼和浩特","包头","通辽"]
+ 	 					}
+ 					},{
+ 						"name":"新疆",
+ 	 					"cities":{
+ 	 						"city":["乌鲁木齐"]
+ 					}
+ 					}
+ 			]		
+ 			};
+ 			//解析：
+ 			$.each(date.province,function(i,dom){
+ 				alert(dom.cities.city);
+ 			});
+ 			
+ 		});
+ 	</script>
+  </head>
+  
+  <body>
+    
+  </body>
+</html>

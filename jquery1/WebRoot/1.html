@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QQ聊天工具</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=gbk">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<style type="text/css">
+		*{margin: 0; padding: 0; line-height: 22px; font-family: "Arial", "微软雅黑";}
+        #chat{margin: 3px auto 0 auto; width:436px; border: 1px #999999 solid;}
+        .chatBody{width: 100%; height: 220px; overflow:auto;}
+        .chatText{border: none; width: 100%; height: 50px;}
+		.btn{text-align: right;}
+		.btn span{display: inline-block; padding: 0 10px; height: 25px;
+   				 overflow: hidden; color: #ffffff; border-radius: 5px; background-color: #069dd5; font-size: 12px; margin-right: 3px; cursor:pointer;}
+		.chatBody div:first-of-type{float: left; width: 38px;}
+		.chatBody p{float: left; font-size: 12px; width:370px; color: #0000ff;}
+		.chatBody div:last-of-type{
+	   			 float: left; width: 370px; font-size: 12px;}
+		.chatBody section{clear: both;}
+		.chatContent{ background:#efefef;border-radius: 5px; padding: 3px;}
+	</style>
+  	<script src="js/jQuery1.11.1.js"></script>
+<script type="text/javascript" src="js/jquery-migrate-1.2.0.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var hadImg=new Array("head01.jpg","head02.jpg","head03.jpg");
+			
+		var uName=new Array("海滩登陆","英雄登场","占领高地");
+		
+		$("#send").click(function(){
+			//判断聊天内容长度》0，显示在上面
+			if($(".chatText").val().length>0){
+				//获取聊天内容
+				var str=$(".chatBody").html();
+				//随机数
+				var tou=Math.floor(Math.random()*3);
+				//获得随机图【片
+				var hedstr="<div><img src='images/"+hadImg[tou]+"'</div>";
+				//获得随机名字
+				var useName="<p>"+uName[tou]+"</p>";
+				
+				//获取当前输入的内容
+				var cha=$(".chatText").val();
+				var chastr="<div>"+cha+"</div>";
+				//把内容放到chatbox里头
+				var suoYou="<section>"+hedstr+useName+chastr+"</section>";
+				//显示在指定位置，清楚内容
+				$(".chatBody").html(str+suoYou);
+				$(".chatBody section div:last").addClass("chatContent");
+				$(".chatText").val("");
+			}
+		});
+	});
+</script>
+  </head>
+  
+  <body>
+    <section id="chat">
+    	<div class="chatBody"></div>
+    	<div><img src="images/icon.jpg"></div>
+   	 	<textarea class="chatText"></textarea>
+    	<div class="btn"><span>关闭(C)</span><span id="send">发送(S)</span></div>
+</section>
+
+    
+  </body>
+</html>

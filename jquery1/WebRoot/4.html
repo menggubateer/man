@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>快讯自动向上移动动画</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=gbk">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <style type="text/css">
+    	ul{
+			border: 1px dashed red;
+			width: 300px;
+			height: auto;
+			text-align: center;
+		}
+		ul li{
+			list-style: none;
+			color: #333;
+			font-size: 16px;
+		}
+    </style>
+	<script src="js/jQuery1.11.1.js"></script>
+	<script type="text/javascript" src="js/jquery-migrate-1.2.0.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			function movedown(){
+				var maginTop=0;
+				var stop=false;
+				var interval=setInterval(function(){
+					if(stop) return;
+					$("ul").children("li").first().animate({
+						"margin-top":maginTop--},
+						0,
+						function(){
+							var $first=$(this);
+							if(!$first.is(":animated")){
+								alert('aa');
+								if((-marginTop)>$first.height()){
+									$first.css({"margin-top":0}).appendTo($("ul"));
+									marginTop=0;
+								}
+							}
+						});
+					
+				} ,50);
+				$("ul").mouseover(function(){
+					stop=true;
+				}).mouseout(function(){
+					stop=false;
+				});
+			}
+			movedown();
+		});
+	</script>
+  </head>
+  
+  <body>
+    <ul id="express">
+    	<li>睡觉</li>
+    	<li>吃饭</li>
+    	<li>喝水</li>
+    </ul>
+  </body>
+</html>
